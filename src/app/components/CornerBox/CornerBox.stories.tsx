@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DemoChildrenContainer } from './CornerBox.styled';
+import { DemoChildrenContainer, DesktopContainer, MobileContainer } from './CornerBox.styled';
 import { CornerType } from './CornerBox.types';
 import CornerBox from './CornerBox.component';
+import styled from 'styled-components';
 
 const meta = {
   title: 'app/CornerBox',
@@ -49,6 +50,7 @@ const DemoChildren = () => (
   </DemoChildrenContainer>
 );
 
+
 export const Default: Story = {
   args: {
     topLeft: CornerType.Square,
@@ -90,6 +92,36 @@ export const Rounded: Story = {
     bottomRight: CornerType.Rounded,
     bottomLeft: CornerType.Rounded,
     cornerSize: '2em',
+    children: <DemoChildren />,
+  },
+};
+
+export const MobileView: Story = {
+  render: (args) => (
+    <MobileContainer>
+      <CornerBox {...args} />
+    </MobileContainer>
+  ),
+  args: {
+    topLeft: CornerType.Square,
+    topRight: CornerType.Boxed,
+    bottomRight: CornerType.Angled,
+    bottomLeft: CornerType.Rounded,
+    children: <DemoChildren />,
+  },
+};
+
+export const DesktopView: Story = {
+  render: (args) => (
+    <DesktopContainer>
+      <CornerBox {...args} />
+    </DesktopContainer>
+  ),
+  args: {
+    topLeft: CornerType.Square,
+    topRight: CornerType.Boxed,
+    bottomRight: CornerType.Angled,
+    bottomLeft: CornerType.Rounded,
     children: <DemoChildren />,
   },
 };
