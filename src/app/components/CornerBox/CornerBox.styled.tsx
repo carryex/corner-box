@@ -1,41 +1,42 @@
 import styled, { css, keyframes } from 'styled-components';
 import { CornerType, CornerPosition } from './CornerBox.types';
 
+const CURVE_SEGMENT_COUNT = 16;
+const STEP = Math.PI / CURVE_SEGMENT_COUNT;
+
+const DECIMAL_PLACES = 3;
+
 const generateRoundedCorner = (radius: string, position: CornerPosition) => {
   const r = parseFloat(radius);
-  const step = Math.PI / 16; // Adjust this value to get smoother curves (more points)
   const points = [];
 
-  for (let i = 0; i <= Math.PI / 2; i += step) {
-    console.log('i', i)
+  for (let i = 0; i <= Math.PI / 2; i += STEP) {
     let x, y;
     switch (position) {
       case CornerPosition.LeftTop:
         x = r * Math.cos(i);
         y = r * Math.sin(i);
-        points.push(`${x.toFixed(3)}em ${y.toFixed(3)}em`);
+        points.push(`${x.toFixed(DECIMAL_PLACES)}em ${y.toFixed(DECIMAL_PLACES)}em`);
         break;
       case CornerPosition.LeftBottom:
         x = r * Math.cos(i);
         y = r * Math.sin(i);
-        points.unshift(`${x.toFixed(3)}em calc(100% - ${y.toFixed(3)}em)`);
+        points.unshift(`${x.toFixed(DECIMAL_PLACES)}em calc(100% - ${y.toFixed(DECIMAL_PLACES)}em)`);
         break;
       case CornerPosition.RightBottom:
         x = r * Math.cos(i);
         y = r * Math.sin(i);
-        points.push(`calc(100% - ${x.toFixed(3)}em) calc(100% - ${y.toFixed(3)}em)`);
+        points.push(`calc(100% - ${x.toFixed(DECIMAL_PLACES)}em) calc(100% - ${y.toFixed(DECIMAL_PLACES)}em)`);
         break;
       case CornerPosition.RightTop:
         x = r * Math.cos(i);
         y = r * Math.sin(i);
-        points.unshift(`calc(100% - ${x.toFixed(3)}em) ${y.toFixed(3)}em`);
+        points.unshift(`calc(100% - ${x.toFixed(DECIMAL_PLACES)}em) ${y.toFixed(DECIMAL_PLACES)}em`);
         break;
     }
   }
   return points.join(', ');
 };
-
-
 
 const getCornerShape = (cornerType: CornerType, size: string, position: CornerPosition) => {
   switch (cornerType) {
@@ -84,10 +85,10 @@ const cornerStyle = (topLeft: CornerType, topRight: CornerType, bottomRight: Cor
   const bottomRightCornerShape = getCornerShape(bottomRight, size, CornerPosition.RightBottom);
   const topRightCornerShape = getCornerShape(topRight, size, CornerPosition.RightTop);
 
-  const topLeftCornerShapeArray = topLeftCornerShape.split(',').map(() => '0 0').join(', ');
-  const bottomLeftCornerShapeArray = bottomLeftCornerShape.split(',').map(() => '0 100%').join(', ');
-  const bottomRightCornerShapeArray = bottomRightCornerShape.split(',').map(() => '100% 100%').join(', ');
-  const topRightCornerShapeArray = topRightCornerShape.split(',').map(() => '100% 0').join(', ');
+  const topLeftCornerInitialShape = topLeftCornerShape.split(',').map(() => '0 0').join(', ');
+  const bottomLeftCornerInitialShape = bottomLeftCornerShape.split(',').map(() => '0 100%').join(', ');
+  const bottomRightCornerInitialShape = bottomRightCornerShape.split(',').map(() => '100% 100%').join(', ');
+  const topRightCornerInitialShape = topRightCornerShape.split(',').map(() => '100% 0').join(', ');
 
   const finalClipPath = `polygon(
     ${topLeftCornerShape},
@@ -97,10 +98,10 @@ const cornerStyle = (topLeft: CornerType, topRight: CornerType, bottomRight: Cor
   )`
 
   const initialClipPath = `polygon(
-    ${topLeftCornerShapeArray},
-    ${bottomLeftCornerShapeArray},
-    ${bottomRightCornerShapeArray},
-    ${topRightCornerShapeArray}
+    ${topLeftCornerInitialShape},
+    ${bottomLeftCornerInitialShape},
+    ${bottomRightCornerInitialShape},
+    ${topRightCornerInitialShape}
   )`
 
   return { finalClipPath, initialClipPath };
