@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { CornerType, CornerPosition } from './CornerBox.types';
 
 const generateRoundedCorner = (radius: string, position: CornerPosition) => {
@@ -79,13 +79,41 @@ const getCornerShape = (cornerType: CornerType, size: string, position: CornerPo
 };
 
 const cornerStyle = (topLeft: CornerType, topRight: CornerType, bottomRight: CornerType, bottomLeft: CornerType, size: string) => {
-  return `polygon(
-    ${getCornerShape(topLeft, size, CornerPosition.LeftTop)},
-    ${getCornerShape(bottomLeft, size, CornerPosition.LeftBottom)},
-    ${getCornerShape(bottomRight, size, CornerPosition.RightBottom)},
-    ${getCornerShape(topRight, size, CornerPosition.RightTop)}
-  )`;
+  const topLeftCornerShape = getCornerShape(topLeft, size, CornerPosition.LeftTop);
+  const bottomLeftCornerShape = getCornerShape(bottomLeft, size, CornerPosition.LeftBottom);
+  const bottomRightCornerShape = getCornerShape(bottomRight, size, CornerPosition.RightBottom);
+  const topRightCornerShape = getCornerShape(topRight, size, CornerPosition.RightTop);
+
+  const topLeftCornerShapeArray = topLeftCornerShape.split(',').map(() => '0 0').join(', ');
+  const bottomLeftCornerShapeArray = bottomLeftCornerShape.split(',').map(() => '0 100%').join(', ');
+  const bottomRightCornerShapeArray = bottomRightCornerShape.split(',').map(() => '100% 100%').join(', ');
+  const topRightCornerShapeArray = topRightCornerShape.split(',').map(() => '100% 0').join(', ');
+
+  const finalClipPath = `polygon(
+    ${topLeftCornerShape},
+    ${bottomLeftCornerShape},
+    ${bottomRightCornerShape},
+    ${topRightCornerShape}
+  )`
+
+  const initialClipPath = `polygon(
+    ${topLeftCornerShapeArray},
+    ${bottomLeftCornerShapeArray},
+    ${bottomRightCornerShapeArray},
+    ${topRightCornerShapeArray}
+  )`
+
+  return { finalClipPath, initialClipPath };
 };
+
+const createClipPathAnimation = (finalClipPath: string, initialClipPath: string) => keyframes`
+  from {
+    clip-path: ${initialClipPath};
+  }
+  to {
+    clip-path: ${finalClipPath};
+  }
+`;
 
 export const OuterBox = styled('div').withConfig({
   shouldForwardProp: (prop, defaultValidatorFn) => !['borderColor'].includes(prop)
@@ -108,9 +136,14 @@ export const InnerBox = styled('div').withConfig({
   cornerSize: string;
   backgroundColor: string;
 }>`
-  ${({ topLeft, topRight, bottomLeft, bottomRight, cornerSize }) => css`
-    clip-path: ${cornerStyle(topLeft, topRight, bottomRight, bottomLeft, cornerSize)};
-  `}
+   ${({ topLeft, topRight, bottomLeft, bottomRight, cornerSize }) => {
+    const { finalClipPath, initialClipPath } = cornerStyle(topLeft, topRight, bottomRight, bottomLeft, cornerSize);
+    const animation = createClipPathAnimation(finalClipPath, initialClipPath);
+    return css`
+      clip-path: ${finalClipPath};
+      animation: ${animation} 3s forwards;
+    `;
+  }}
   background-color: ${({ backgroundColor }) => backgroundColor};
   width: 100%;
   height: 100%;
