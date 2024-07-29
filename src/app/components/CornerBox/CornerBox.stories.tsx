@@ -10,51 +10,31 @@ const meta = {
     topLeft: {
       description: 'Corner type for the top-left corner',
       control: 'select',
-      options: [CornerType.Square, CornerType.Angled, CornerType.Boxed, CornerType.Rounded],
+      options: Object.values(CornerType),
       defaultValue: CornerType.Square,
-      table: {
-        type: { summary: 'square | angled | boxed | rounded' },
-        defaultValue: { summary: 'square' },
-      },
     },
     topRight: {
       description: 'Corner type for the top-right corner',
       control: 'select',
-      options: [CornerType.Square, CornerType.Angled, CornerType.Boxed, CornerType.Rounded],
+      options: Object.values(CornerType),
       defaultValue: CornerType.Square,
-      table: {
-        type: { summary: 'square | angled | boxed | rounded' },
-        defaultValue: { summary: 'square' },
-      },
     },
     bottomLeft: {
       description: 'Corner type for the bottom-left corner',
       control: 'select',
-      options: [CornerType.Square, CornerType.Angled, CornerType.Boxed, CornerType.Rounded],
+      options: Object.values(CornerType),
       defaultValue: CornerType.Square,
-      table: {
-        type: { summary: 'square | angled | boxed | rounded' },
-        defaultValue: { summary: 'square' },
-      },
     },
     bottomRight: {
       description: 'Corner type for the bottom-right corner',
       control: 'select',
-      options: [CornerType.Square, CornerType.Angled, CornerType.Boxed, CornerType.Rounded],
+      options: Object.values(CornerType),
       defaultValue: CornerType.Square,
-      table: {
-        type: { summary: 'square | angled | boxed | rounded' },
-        defaultValue: { summary: 'square' },
-      },
     },
     cornerSize: {
       description: 'Size of the corners. Should be specified in em units.',
       control: 'text',
       defaultValue: '0.75em',
-      table: {
-        type: { summary: 'string (em units)' },
-        defaultValue: { summary: '0.75em' },
-      },
     },
   },
 } satisfies Meta<typeof CornerBox>;
@@ -76,6 +56,7 @@ export const Default: Story = {
     bottomRight: CornerType.Angled,
     bottomLeft: CornerType.Rounded,
     children: <DemoChildren />,
+    cornerSize: '0.75em'
   },
 };
 
