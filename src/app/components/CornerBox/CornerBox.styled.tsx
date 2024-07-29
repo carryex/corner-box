@@ -31,6 +31,7 @@ export const generateDynamicStyles = ({ topLeft, topRight, bottomLeft, bottomRig
 
 export const DemoChildrenContainer = styled('div', {
   padding: '0.5em 2em',
+  color: '#4A4A4A',
 });
 
 export const MobileContainer = styled('div', {

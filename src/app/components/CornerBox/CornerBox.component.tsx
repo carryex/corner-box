@@ -1,42 +1,16 @@
 import React from 'react';
 import { dynamicBorderColor, generateDynamicStyles, OuterBox } from './CornerBox.styled';
-import { CornerType } from './CornerBox.types';
-
-interface CornerBoxProps {
-  topLeft?: CornerType;
-  topRight?: CornerType;
-  bottomLeft?: CornerType;
-  bottomRight?: CornerType;
-  cornerSize?: string;
-  backgroundColor?: string;
-  borderColor?: string;
-  children?: React.ReactNode;
-}
-
-type InnerBoxProps = {
-  topLeft: CornerType;
-  topRight: CornerType;
-  bottomLeft: CornerType;
-  bottomRight: CornerType;
-  cornerSize: string;
-  backgroundColor: string;
-  children: React.ReactNode;
-};
-
-type DynamicOuterBoxProps = {
-  borderColor: string;
-  children: React.ReactNode;
-};
+import { BaseCornerBoxProps, CornerType, DynamicOuterBoxProps, InnerBoxProps } from './CornerBox.types';
 
 
-const CornerBox: React.FC<CornerBoxProps> = ({
+const CornerBox: React.FC<BaseCornerBoxProps> = ({
   topLeft = CornerType.Square,
   topRight = CornerType.Square,
   bottomLeft = CornerType.Square,
   bottomRight = CornerType.Square,
   cornerSize = '0.75em',
-  backgroundColor = 'white',
-  borderColor = 'black',
+  backgroundColor = '#F5F5F5',
+  borderColor = '#A8A8A8',
   children,
 }) => {
   return (

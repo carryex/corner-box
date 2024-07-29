@@ -58,41 +58,34 @@ export const Default: Story = {
     bottomRight: CornerType.Angled,
     bottomLeft: CornerType.Rounded,
     children: <DemoChildren />,
-    cornerSize: '0.75em'
+    cornerSize: '0.75em',
+    backgroundColor: '#F5F5F5',
+    borderColor: '#A8A8A8'
   },
 };
 
 export const Color: Story = {
   args: {
-    topLeft: CornerType.Square,
-    topRight: CornerType.Boxed,
-    bottomRight: CornerType.Angled,
-    bottomLeft: CornerType.Square,
-    borderColor: 'yellow',
-    backgroundColor: 'lightblue',
-    children: <DemoChildren />,
+    ...Default.args,
+    borderColor: '#FFE5D9',
+    backgroundColor: '#9E7676',
   },
 };
 
 export const Size: Story = {
   args: {
-    topLeft: CornerType.Square,
-    topRight: CornerType.Boxed,
-    bottomRight: CornerType.Angled,
-    bottomLeft: CornerType.Square,
+    ...Default.args,
     cornerSize: '2.5em',
-    children: <DemoChildren />,
   },
 };
 
 export const Rounded: Story = {
   args: {
+    ...Default.args,
     topLeft: CornerType.Rounded,
     topRight: CornerType.Rounded,
     bottomRight: CornerType.Rounded,
     bottomLeft: CornerType.Rounded,
-    cornerSize: '2em',
-    children: <DemoChildren />,
   },
 };
 
@@ -103,11 +96,7 @@ export const MobileView: Story = {
     </MobileContainer>
   ),
   args: {
-    topLeft: CornerType.Square,
-    topRight: CornerType.Boxed,
-    bottomRight: CornerType.Angled,
-    bottomLeft: CornerType.Rounded,
-    children: <DemoChildren />,
+    ...Default.args,
   },
 };
 
@@ -118,10 +107,6 @@ export const DesktopView: Story = {
     </DesktopContainer>
   ),
   args: {
-    topLeft: CornerType.Square,
-    topRight: CornerType.Boxed,
-    bottomRight: CornerType.Angled,
-    bottomLeft: CornerType.Rounded,
-    children: <DemoChildren />,
+    ...Default.args,
   },
 };
