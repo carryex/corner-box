@@ -80,7 +80,7 @@ export const Size: Story = {
     topRight: CornerType.Boxed,
     bottomRight: CornerType.Angled,
     bottomLeft: CornerType.Square,
-    cornerSize: '1em',
+    cornerSize: '2.5em',
     children: <DemoChildren />,
   },
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { InnerBox, OuterBox } from './CornerBox.styled';
+import { dynamicBorderColor, generateDynamicStyles, OuterBox } from './CornerBox.styled';
 import { CornerType } from './CornerBox.types';
 
 interface CornerBoxProps {
@@ -13,6 +13,22 @@ interface CornerBoxProps {
   children?: React.ReactNode;
 }
 
+type InnerBoxProps = {
+  topLeft: CornerType;
+  topRight: CornerType;
+  bottomLeft: CornerType;
+  bottomRight: CornerType;
+  cornerSize: string;
+  backgroundColor: string;
+  children: React.ReactNode;
+};
+
+type DynamicOuterBoxProps = {
+  borderColor: string;
+  children: React.ReactNode;
+};
+
+
 const CornerBox: React.FC<CornerBoxProps> = ({
   topLeft = CornerType.Square,
   topRight = CornerType.Square,
@@ -24,7 +40,7 @@ const CornerBox: React.FC<CornerBoxProps> = ({
   children,
 }) => {
   return (
-    <OuterBox borderColor={borderColor}>
+    <DynamicOuterBox borderColor={borderColor}>
       <InnerBox
         topLeft={topLeft}
         topRight={topRight}
@@ -35,8 +51,29 @@ const CornerBox: React.FC<CornerBoxProps> = ({
       >
         {children}
       </InnerBox>
+    </DynamicOuterBox>
+  );
+};
+
+const DynamicOuterBox: React.FC<DynamicOuterBoxProps> = ({ borderColor, children }) => {
+  const dynamicClassName = dynamicBorderColor(borderColor);
+
+  return (
+    <OuterBox className={dynamicClassName}>
+      {children}
     </OuterBox>
   );
 };
+
+export const InnerBox: React.FC<InnerBoxProps> = ({ topLeft, topRight, bottomLeft, bottomRight, cornerSize, backgroundColor, children }) => {
+  const dynamicClassName = generateDynamicStyles({ topLeft, topRight, bottomLeft, bottomRight, cornerSize });
+
+  return (
+    <div className={dynamicClassName} style={{ backgroundColor }}>
+      {children}
+    </div>
+  );
+};
+
 
 export default CornerBox;

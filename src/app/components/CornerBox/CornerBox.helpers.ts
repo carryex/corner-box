@@ -1,11 +1,8 @@
-import { CornerPosition, CornerType } from "./CornerBox.types";
+import { CornerPosition, CornerType } from './CornerBox.types';
 
 const CURVE_SEGMENT_COUNT = 16;
 const STEP = Math.PI / CURVE_SEGMENT_COUNT;
-
 const DECIMAL_PLACES = 3;
-
-
 
 const generateRoundedCorner = (radius: string, position: CornerPosition) => {
   const r = parseFloat(radius);
@@ -96,14 +93,14 @@ export const cornerStyle = (topLeft: CornerType, topRight: CornerType, bottomRig
     ${bottomLeftCornerShape},
     ${bottomRightCornerShape},
     ${topRightCornerShape}
-  )`
+  )`;
 
   const initialClipPath = `polygon(
     ${topLeftCornerInitialShape},
     ${bottomLeftCornerInitialShape},
     ${bottomRightCornerInitialShape},
     ${topRightCornerInitialShape}
-  )`
+  )`;
 
   return { finalClipPath, initialClipPath };
 };
