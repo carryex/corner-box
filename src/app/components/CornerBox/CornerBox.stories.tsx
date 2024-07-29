@@ -21,7 +21,7 @@ export const Default: Story = {
     topLeft: CornerType.Square,
     topRight: CornerType.Boxed,
     bottomRight: CornerType.Angled,
-    bottomLeft: CornerType.Square,
+    bottomLeft: CornerType.Rounded,
     children: <DemoChildren />
   },
 }
@@ -44,7 +44,18 @@ export const Size: Story = {
     topRight: CornerType.Boxed,
     bottomRight: CornerType.Angled,
     bottomLeft: CornerType.Square,
-    cornerSize: '40px',
+    cornerSize: '1em',
+    children: <DemoChildren />
+  },
+}
+
+export const Rounded: Story = {
+  args: {
+    topLeft: CornerType.Rounded,
+    topRight: CornerType.Rounded,
+    bottomRight: CornerType.Rounded,
+    bottomLeft: CornerType.Rounded,
+    cornerSize: '2em',
     children: <DemoChildren />
   },
 }
