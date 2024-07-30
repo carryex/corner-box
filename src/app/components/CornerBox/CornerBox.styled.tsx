@@ -55,6 +55,7 @@ export const DesktopContainer = styled(MobileContainer, {
 
 export const OuterBox = styled('div', {
   display: 'block',
+  height: '100%',
   filter: 'var(--pseudo-border)',
   variants: {
     variant: {
@@ -69,6 +70,7 @@ export const OuterBox = styled('div', {
 });
 export const InnerBoxBlock = styled('div', {
   transition: 'background-color 0.3s ease, color 0.3s ease',
+  height: '100%',
   variants: {
     variant: {
       primary: {

@@ -5,10 +5,10 @@ export const getCornerConfig = (size: BasicSize): Omit<BaseCornerPosition, 'anim
   switch (size) {
     case BasicSize.Small:
       return ({
-        topLeft: { type: CornerType.Angled, size: '0.25em' },
-        topRight: { type: CornerType.Angled, size: '0.75em' },
-        bottomRight: { type: CornerType.Angled, size: '0.25em' },
-        bottomLeft: { type: CornerType.Angled, size: '0.75em' },
+        topLeft: { type: CornerType.Angled, size: '0.45em' },
+        topRight: { type: CornerType.Angled, size: '0.85em' },
+        bottomRight: { type: CornerType.Angled, size: '0.45em' },
+        bottomLeft: { type: CornerType.Angled, size: '0.85em' },
       })
     case BasicSize.Large:
       return ({
