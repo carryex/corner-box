@@ -60,10 +60,10 @@ export const OuterBox = styled('div', {
   variants: {
     variant: {
       primary: {
-        '--pseudo-border': `drop-shadow(0px 1px 0px $green) drop-shadow(0px -1px 0px $green) drop-shadow(-1px 0px 0px $green) drop-shadow(1px 0px 0px $green)`,
+        '--pseudo-border': `drop-shadow(0px 1px 0px $colors$green) drop-shadow(0px -1px 0px $colors$green) drop-shadow(-1px 0px 0px $colors$green) drop-shadow(1px 0px 0px $colors$green)`,
       },
       secondary: {
-        '--pseudo-border': `drop-shadow(0px 1px 0px $purple) drop-shadow(0px -1px 0px $purple) drop-shadow(-1px 0px 0px $purple) drop-shadow(1px 0px 0px $purple)`,
+        '--pseudo-border': `drop-shadow(0px 1px 0px $colors$purple) drop-shadow(0px -1px 0px $colors$purple) drop-shadow(-1px 0px 0px $colors$purple) drop-shadow(1px 0px 0px $colors$purple)`,
       },
     },
   },
