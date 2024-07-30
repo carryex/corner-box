@@ -25,6 +25,7 @@ export interface BaseCornerPosition {
   animation?: boolean;
 }
 export interface BaseCornerBoxProps extends InnerBoxProps {
+  height?: 'content' | 'full',
 }
 
 export interface InnerBoxProps extends BaseCornerPosition {
@@ -34,5 +35,6 @@ export interface InnerBoxProps extends BaseCornerPosition {
 
 export type DynamicOuterBoxProps = {
   children: React.ReactNode;
-  variant: 'primary' | 'secondary'
+  variant: 'primary' | 'secondary';
+  height?: 'content' | 'full';
 };

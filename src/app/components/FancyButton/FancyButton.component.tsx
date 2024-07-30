@@ -21,7 +21,7 @@ const FancyButton: React.FC<FancyButtonProps> = ({ variant, onClick, children, s
 
   return (
     <FancyButtonContainer variant={variant} onClick={onClick} size={size}>
-      <CornerBox {...cornersConfig} animation={false} variant={variant}>
+      <CornerBox {...cornersConfig} animation={false} variant={variant} height='full'>
         <FancyButtonChildrenContainer size={size}>
           <ScrambleTextContainer>
             <ScrambleText children={children} scrambleDuration={500} />

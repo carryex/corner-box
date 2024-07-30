@@ -10,10 +10,11 @@ const CornerBox: React.FC<BaseCornerBoxProps> = ({
   bottomRight = { type: CornerType.Square, size: '0.75em' },
   children,
   animation = true,
-  variant = 'primary'
+  variant = 'primary',
+  height = 'content'
 }) => {
   return (
-    <DynamicOuterBox variant={variant}>
+    <DynamicOuterBox variant={variant} height={height}>
       <InnerBox
         topLeft={topLeft}
         topRight={topRight}
@@ -28,9 +29,9 @@ const CornerBox: React.FC<BaseCornerBoxProps> = ({
   );
 };
 
-export const DynamicOuterBox: React.FC<DynamicOuterBoxProps> = ({ variant, children }) => {
+export const DynamicOuterBox: React.FC<DynamicOuterBoxProps> = ({ variant, children, height }) => {
   return (
-    <OuterBox variant={variant}>
+    <OuterBox variant={variant} height={height}>
       {children}
     </OuterBox>
   );

@@ -55,9 +55,17 @@ export const DesktopContainer = styled(MobileContainer, {
 
 export const OuterBox = styled('div', {
   display: 'block',
-  height: '100%',
+
   filter: 'var(--pseudo-border)',
   variants: {
+    height: {
+      full: {
+        height: '100%',
+      },
+      content: {
+        height: 'fit-content'
+      }
+    },
     variant: {
       primary: {
         '--pseudo-border': `drop-shadow(0px 1px 0px $colors$green) drop-shadow(0px -1px 0px $colors$green) drop-shadow(-1px 0px 0px $colors$green) drop-shadow(1px 0px 0px $colors$green)`,
