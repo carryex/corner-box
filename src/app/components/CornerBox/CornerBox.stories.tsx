@@ -47,17 +47,15 @@ export const Default: Story = {
     topRight: { type: CornerType.Boxed, size: '1.25em' },
     bottomRight: { type: CornerType.Angled, size: '1.5em' },
     bottomLeft: { type: CornerType.Rounded, size: '1.75em' },
+    variant: 'primary',
     children: <DemoChildren />,
-    backgroundColor: '#F5F5F5',
-    borderColor: '#A8A8A8'
   },
 };
 
 export const Color: Story = {
   args: {
     ...Default.args,
-    borderColor: '#FFE5D9',
-    backgroundColor: '#9E7676',
+    variant: 'secondary'
   },
 };
 

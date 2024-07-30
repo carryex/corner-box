@@ -1,6 +1,7 @@
-import { styled, keyframes, css } from '@stitches/react';
+import { keyframes, css } from '@stitches/react';
 import { CornerConfig } from './CornerBox.types';
 import { cornerStyle } from './CornerBox.helpers';
+import { styled } from '../../../../stitches.config';
 
 export const createClipPathAnimation = (finalClipPath: string, initialClipPath: string) => {
   return keyframes({
@@ -9,9 +10,6 @@ export const createClipPathAnimation = (finalClipPath: string, initialClipPath: 
   });
 };
 
-export const dynamicBorderColor = (borderColor: string) => css({
-  '--pseudo-border': `drop-shadow(0px 1px 0px ${borderColor}) drop-shadow(0px -1px 0px ${borderColor}) drop-shadow(-1px 0px 0px ${borderColor}) drop-shadow(1px 0px 0px ${borderColor})`,
-})();
 
 export const generateDynamicStyles = ({ topLeft, topRight, bottomLeft, bottomRight, animation }: {
   topLeft: CornerConfig;
@@ -37,7 +35,6 @@ export const generateDynamicStyles = ({ topLeft, topRight, bottomLeft, bottomRig
 
 export const DemoChildrenContainer = styled('div', {
   padding: '0.5em 2em',
-  color: '#4A4A4A',
 });
 
 export const MobileContainer = styled('div', {
@@ -57,6 +54,43 @@ export const DesktopContainer = styled(MobileContainer, {
 
 
 export const OuterBox = styled('div', {
-  display: 'inline-block',
+  display: 'block',
   filter: 'var(--pseudo-border)',
+  background: 'none 0% 0% / auto repeat scroll padding-box border-box',
+  variants: {
+    variant: {
+      primary: {
+        '--pseudo-border': `drop-shadow(0px 1px 0px $green) drop-shadow(0px -1px 0px $green) drop-shadow(-1px 0px 0px $green) drop-shadow(1px 0px 0px $green)`,
+      },
+      secondary: {
+        '--pseudo-border': `drop-shadow(0px 1px 0px $purple) drop-shadow(0px -1px 0px $purple) drop-shadow(-1px 0px 0px $purple) drop-shadow(1px 0px 0px $purple)`,
+      },
+    },
+  },
 });
+export const InnerBoxBlock = styled('div', {
+  transition: 'background-color 0.3s ease, color 0.3s ease',
+  variants: {
+    variant: {
+      primary: {
+        backgroundColor: "$green",
+        color: "$background",
+        '&:hover': {
+          backgroundColor: '$background',
+          color: "$green",
+        },
+      },
+      secondary: {
+        backgroundColor: "$purple",
+        color: "$background",
+        '&:hover': {
+          backgroundColor: '$background',
+          color: "$purple",
+        },
+      }
+    }
+  },
+  defaultVariants: {
+    variant: 'primary'
+  }
+})

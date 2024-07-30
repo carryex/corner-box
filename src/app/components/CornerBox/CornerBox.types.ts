@@ -25,15 +25,14 @@ export interface BaseCornerPosition {
   animation?: boolean;
 }
 export interface BaseCornerBoxProps extends InnerBoxProps {
-  borderColor: string;
 }
 
 export interface InnerBoxProps extends BaseCornerPosition {
-  backgroundColor: string;
   children: React.ReactNode;
+  variant: 'primary' | 'secondary'
 };
 
 export type DynamicOuterBoxProps = {
-  borderColor: string;
   children: React.ReactNode;
+  variant: 'primary' | 'secondary'
 };

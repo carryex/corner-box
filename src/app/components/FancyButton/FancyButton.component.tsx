@@ -22,7 +22,6 @@ const AbsoluteContainer = styled('div', {
 })
 
 const FancyButton: React.FC<FancyButtonProps> = ({ variant, onClick, children, size = BasicSize.Medium }) => {
-  const color = variant === 'primary' ? '#b0cd68' : '#a986d9';
   const cornersConfig = getCornerConfig(size);
 
   const [textSize, setTextSize] = useState<{ width: number, height: number }>({ width: 0, height: 0 });
@@ -44,10 +43,10 @@ const FancyButton: React.FC<FancyButtonProps> = ({ variant, onClick, children, s
 
   return (
     <FancyButtonContainer variant={variant} onClick={onClick}>
-      <CornerBox {...cornersConfig} backgroundColor={color} borderColor={color} animation={false}>
+      <CornerBox {...cornersConfig} animation={false} variant={variant}>
         <FancyButtonChildrenContainer size={size} style={{ width: `${textSize.width}px`, height: `${textSize.height}px` }}>
           <AbsoluteContainer ref={absoluteContainerRef}>
-            <ScrambleText children={children} />
+            <ScrambleText children={children} scrambleDuration={500} />
           </AbsoluteContainer>
         </FancyButtonChildrenContainer>
       </CornerBox>

@@ -5,7 +5,7 @@ export const FancyButtonContainer = styled('button', {
   padding: '0',
   backgroundColor: 'transparent',
   cursor: 'pointer',
-  display: 'inline-block',
+  display: 'block',
   color: '#0c0c0c',
   variants: {
     variant: {
@@ -21,12 +21,15 @@ export const FancyButtonChildrenContainer = styled('div', {
     size: {
       small: {
         padding: '0.25em 0.75em',
+        fontSize: '0.875em',
       },
       medium: {
-        padding: '0.75em 2em',
+        padding: '0.5em 1.5em',
+        fontSize: '1em',
       },
       large: {
-        padding: '1.5em 3.5em'
+        padding: '0.75em 2.25em',
+        fontSize: '1.25em',
       }
     }
   }
