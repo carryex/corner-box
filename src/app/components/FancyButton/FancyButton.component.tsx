@@ -7,28 +7,19 @@
 // TODO add font
 
 import React from 'react';
-import { BaseCornerBoxProps, CornerType } from '../CornerBox/CornerBox.types';
 import CornerBox from '../CornerBox/CornerBox.component';
 import { FancyButtonChildrenContainer, FancyButtonContainer } from './FancyButton.styled';
+import { BasicSize, FancyButtonProps } from './FancyButton.types';
+import { getCornerConfig } from './FancyButton.helpers';
 
-type FancyButtonProps = Pick<BaseCornerBoxProps, 'children'> & {
-  variant: 'primary' | 'secondary';
-  onClick?: () => void;
-};
-
-const FancyButton: React.FC<FancyButtonProps> = ({ variant, onClick, children }) => {
+const FancyButton: React.FC<FancyButtonProps> = ({ variant, onClick, children, size = BasicSize.Medium }) => {
   const color = variant === 'primary' ? '#b0cd68' : '#a986d9';
-  const cornersConfig = {
-    topLeft: { type: CornerType.Angled, size: '0.75em' },
-    topRight: { type: CornerType.Angled, size: '2.75em' },
-    bottomRight: { type: CornerType.Angled, size: '0.75em' },
-    bottomLeft: { type: CornerType.Angled, size: '2.75em' },
-  }
+  const cornersConfig = getCornerConfig(size);
 
   return (
     <FancyButtonContainer variant={variant} onClick={onClick}>
       <CornerBox {...cornersConfig} backgroundColor={color} borderColor={color} animation={false}>
-        <FancyButtonChildrenContainer>
+        <FancyButtonChildrenContainer size={size}>
           {children}
         </FancyButtonChildrenContainer>
       </CornerBox>

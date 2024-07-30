@@ -22,7 +22,7 @@ export interface BaseCornerPosition {
   topRight: CornerConfig;
   bottomLeft: CornerConfig;
   bottomRight: CornerConfig;
-  animation: boolean;
+  animation?: boolean;
 }
 export interface BaseCornerBoxProps extends InnerBoxProps {
   borderColor: string;

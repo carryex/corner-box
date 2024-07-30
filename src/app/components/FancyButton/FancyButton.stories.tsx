@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import FancyButton from './FancyButton.component';
+import { BasicSize } from './FancyButton.types';
 
 const meta: Meta<typeof FancyButton> = {
   title: 'app/FancyButton',
@@ -15,6 +16,10 @@ const meta: Meta<typeof FancyButton> = {
       control: 'text',
       defaultValue: 'Fancy Button',
     },
+    size: {
+      control: 'select',
+      options: Object.values(BasicSize)
+    }
   },
 };
 export default meta;
@@ -34,3 +39,26 @@ export const Secondary: Story = {
     children: 'Secondary Fancy Button',
   },
 };
+
+export const Small: Story = {
+  args: {
+    ...Primary.args,
+    size: BasicSize.Small
+  }
+}
+
+export const Medium: Story = {
+  args: {
+    ...Primary.args,
+    size: BasicSize.Medium
+  }
+}
+
+
+export const Large: Story = {
+  args: {
+    ...Primary.args,
+    size: BasicSize.Large
+  }
+}
+

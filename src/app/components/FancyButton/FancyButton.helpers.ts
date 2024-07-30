@@ -1,0 +1,29 @@
+import { BaseCornerPosition, CornerType } from "../CornerBox/CornerBox.types"
+import { BasicSize } from "./FancyButton.types"
+
+export const getCornerConfig = (size: BasicSize): Omit<BaseCornerPosition, 'animation'> => {
+  switch (size) {
+    case BasicSize.Small:
+      return ({
+        topLeft: { type: CornerType.Angled, size: '0.25em' },
+        topRight: { type: CornerType.Angled, size: '0.75em' },
+        bottomRight: { type: CornerType.Angled, size: '0.25em' },
+        bottomLeft: { type: CornerType.Angled, size: '0.75em' },
+      })
+    case BasicSize.Large:
+      return ({
+        topLeft: { type: CornerType.Angled, size: '0.75em' },
+        topRight: { type: CornerType.Angled, size: '2em' },
+        bottomRight: { type: CornerType.Angled, size: '0.75em' },
+        bottomLeft: { type: CornerType.Angled, size: '2em' },
+      })
+    case BasicSize.Medium:
+    default:
+      return ({
+        topLeft: { type: CornerType.Angled, size: '0.5em' },
+        topRight: { type: CornerType.Angled, size: '1.25em' },
+        bottomRight: { type: CornerType.Angled, size: '0.5em' },
+        bottomLeft: { type: CornerType.Angled, size: '1.25em' },
+      })
+  }
+}

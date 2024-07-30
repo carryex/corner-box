@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { DemoChildrenContainer, DesktopContainer, MobileContainer } from './CornerBox.styled';
-import { CornerPosition, CornerType } from './CornerBox.types';
+import { CornerType } from './CornerBox.types';
 import CornerBox from './CornerBox.component';
 
 const meta = {

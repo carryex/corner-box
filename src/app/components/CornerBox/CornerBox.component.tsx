@@ -39,7 +39,7 @@ const DynamicOuterBox: React.FC<DynamicOuterBoxProps> = ({ borderColor, children
   );
 };
 
-export const InnerBox: React.FC<InnerBoxProps> = ({ topLeft, topRight, bottomLeft, bottomRight, backgroundColor, children, animation }) => {
+export const InnerBox: React.FC<InnerBoxProps> = ({ topLeft, topRight, bottomLeft, bottomRight, backgroundColor, children, animation = true }) => {
   const dynamicClassName = generateDynamicStyles({ topLeft, topRight, bottomLeft, bottomRight, animation });
 
   return (
