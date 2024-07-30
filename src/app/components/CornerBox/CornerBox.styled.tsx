@@ -56,7 +56,6 @@ export const DesktopContainer = styled(MobileContainer, {
 export const OuterBox = styled('div', {
   display: 'block',
   filter: 'var(--pseudo-border)',
-  background: 'none 0% 0% / auto repeat scroll padding-box border-box',
   variants: {
     variant: {
       primary: {

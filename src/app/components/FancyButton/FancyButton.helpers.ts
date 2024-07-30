@@ -13,9 +13,9 @@ export const getCornerConfig = (size: BasicSize): Omit<BaseCornerPosition, 'anim
     case BasicSize.Large:
       return ({
         topLeft: { type: CornerType.Angled, size: '0.75em' },
-        topRight: { type: CornerType.Angled, size: '2em' },
+        topRight: { type: CornerType.Angled, size: '1.5em' },
         bottomRight: { type: CornerType.Angled, size: '0.75em' },
-        bottomLeft: { type: CornerType.Angled, size: '2em' },
+        bottomLeft: { type: CornerType.Angled, size: '1.5em' },
       })
     case BasicSize.Medium:
     default:
