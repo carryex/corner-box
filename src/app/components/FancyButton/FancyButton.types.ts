@@ -6,8 +6,9 @@ export enum BasicSize {
   Large = 'large',
 }
 
-export type FancyButtonProps = Pick<BaseCornerBoxProps, 'children'> & {
+export type FancyButtonProps = {
   variant: 'primary' | 'secondary';
+  children: string;
   size?: BasicSize;
   onClick?: () => void;
 };

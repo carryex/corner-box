@@ -16,7 +16,7 @@ export const FancyButtonContainer = styled('button', {
 });
 
 export const FancyButtonChildrenContainer = styled('div', {
-  padding: '2em',
+  position: 'relative',
   variants: {
     size: {
       small: {
