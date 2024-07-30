@@ -1,4 +1,12 @@
+
+import { keyframes } from "@stitches/react";
 import { styled } from "../../../../stitches.config";
+
+const rotate = keyframes({
+  '0%': { transform: 'scale(1,1)' },
+  '50%': { transform: 'scale(1,0.5) translate(0px, 40%)' },
+  '100%': { transform: 'scale(1,1)' },
+})
 
 
 export const FancyButtonContainer = styled('button', {
@@ -47,7 +55,10 @@ export const FancyButtonContainer = styled('button', {
           top: 0,
           right: 0,
           transition: 'fill 0.3s ease, stroke 0.3s ease',
-          position: 'absolute'
+          position: 'absolute',
+          '.button__cap-eye': {
+            transition: 'transform 0.3s ease',
+          }
         }
       },
       medium: {
@@ -57,7 +68,10 @@ export const FancyButtonContainer = styled('button', {
           top: 0,
           right: 0,
           transition: 'fill 0.3s ease, stroke 0.3s ease',
-          position: 'absolute'
+          position: 'absolute',
+          '.button__cap-eye': {
+            transition: 'transform 0.3s ease',
+          }
         }
       },
       large: {
@@ -69,7 +83,15 @@ export const FancyButtonContainer = styled('button', {
           top: 0,
           right: 0,
           transition: 'fill 0.3s ease, stroke 0.3s ease',
-          position: 'absolute'
+          position: 'absolute',
+          '.button__cap-eye': {
+            transition: 'transform 0.3s ease',
+          }
+        },
+        '&:hover': {
+          '.button__cap-eye': {
+            animation: `${rotate} 0.3s linear`
+          }
         }
       }
     }
