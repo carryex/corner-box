@@ -1,4 +1,5 @@
-import { styled } from "@stitches/react";
+import { styled } from "../../../../stitches.config";
+
 
 export const FancyButtonContainer = styled('button', {
   border: 'none',
@@ -8,6 +9,8 @@ export const FancyButtonContainer = styled('button', {
   display: 'block',
   color: '#0c0c0c',
   position: 'relative',
+  fontFamily: '$ocra',
+  textTransform: 'uppercase',
   variants: {
     variant: {
       primary: {

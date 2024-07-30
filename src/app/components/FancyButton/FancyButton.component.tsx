@@ -1,3 +1,4 @@
+'use client'
 // TODO add different border sizes
 // TODO add purple-primary and green-secondary variants
 // TODO add small, medium, large
@@ -12,7 +13,7 @@ import { FancyButtonChildrenContainer, FancyButtonContainer } from './FancyButto
 import { BasicSize, FancyButtonProps } from './FancyButton.types';
 import { getCornerConfig } from './FancyButton.helpers';
 import ScrambleText from '../ScrambleText/ScrambleText';
-import { styled } from '@stitches/react';
+import { styled } from '../../../../stitches.config';
 
 const AbsoluteContainer = styled('div', {
   position: 'absolute',
