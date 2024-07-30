@@ -1,3 +1,8 @@
+export interface CornerConfig {
+  type: CornerType;
+  size: string;
+}
+
 export enum CornerType {
   Square = 'square',
   Angled = 'angled',
@@ -13,17 +18,16 @@ export enum CornerPosition {
 }
 
 export interface BaseCornerPosition {
-  topLeft: CornerType;
-  topRight: CornerType;
-  bottomLeft: CornerType;
-  bottomRight: CornerType;
+  topLeft: CornerConfig;
+  topRight: CornerConfig;
+  bottomLeft: CornerConfig;
+  bottomRight: CornerConfig;
 }
 export interface BaseCornerBoxProps extends InnerBoxProps {
   borderColor: string;
 }
 
 export interface InnerBoxProps extends BaseCornerPosition {
-  cornerSize: string;
   backgroundColor: string;
   children: React.ReactNode;
 };

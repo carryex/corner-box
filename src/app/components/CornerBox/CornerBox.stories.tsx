@@ -1,41 +1,31 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { DemoChildrenContainer, DesktopContainer, MobileContainer } from './CornerBox.styled';
-import { CornerType } from './CornerBox.types';
+import { CornerPosition, CornerType } from './CornerBox.types';
 import CornerBox from './CornerBox.component';
-import styled from 'styled-components';
 
 const meta = {
   title: 'app/CornerBox',
   component: CornerBox,
   argTypes: {
     topLeft: {
-      description: 'Corner type for the top-left corner',
-      control: 'select',
-      options: Object.values(CornerType),
-      defaultValue: CornerType.Square,
+      description: 'Configuration for the top-left corner',
+      control: 'object',
+      defaultValue: { type: CornerType.Square, size: '1em' },
     },
     topRight: {
-      description: 'Corner type for the top-right corner',
-      control: 'select',
-      options: Object.values(CornerType),
-      defaultValue: CornerType.Square,
+      description: 'Configuration for the top-right corner',
+      control: 'object',
+      defaultValue: { type: CornerType.Square, size: '1em' },
     },
     bottomLeft: {
-      description: 'Corner type for the bottom-left corner',
-      control: 'select',
-      options: Object.values(CornerType),
-      defaultValue: CornerType.Square,
+      description: 'Configuration for the bottom-left corner',
+      control: 'object',
+      defaultValue: { type: CornerType.Square, size: '1em' },
     },
     bottomRight: {
-      description: 'Corner type for the bottom-right corner',
-      control: 'select',
-      options: Object.values(CornerType),
-      defaultValue: CornerType.Square,
-    },
-    cornerSize: {
-      description: 'Size of the corners. Should be specified in em units.',
-      control: 'text',
-      defaultValue: '0.75em',
+      description: 'Configuration for the bottom-right corner',
+      control: 'object',
+      defaultValue: { type: CornerType.Square, size: '1em' },
     },
   },
 } satisfies Meta<typeof CornerBox>;
@@ -53,12 +43,11 @@ const DemoChildren = () => (
 
 export const Default: Story = {
   args: {
-    topLeft: CornerType.Square,
-    topRight: CornerType.Boxed,
-    bottomRight: CornerType.Angled,
-    bottomLeft: CornerType.Rounded,
+    topLeft: { type: CornerType.Square, size: '1em' },
+    topRight: { type: CornerType.Boxed, size: '1.25em' },
+    bottomRight: { type: CornerType.Angled, size: '1.5em' },
+    bottomLeft: { type: CornerType.Rounded, size: '1.75em' },
     children: <DemoChildren />,
-    cornerSize: '0.75em',
     backgroundColor: '#F5F5F5',
     borderColor: '#A8A8A8'
   },
@@ -75,17 +64,20 @@ export const Color: Story = {
 export const Size: Story = {
   args: {
     ...Default.args,
-    cornerSize: '2.5em',
+    topLeft: { type: CornerType.Angled, size: '0.75em' },
+    topRight: { type: CornerType.Angled, size: '2.75em' },
+    bottomRight: { type: CornerType.Angled, size: '0.75em' },
+    bottomLeft: { type: CornerType.Angled, size: '2.75em' },
   },
 };
 
 export const Rounded: Story = {
   args: {
     ...Default.args,
-    topLeft: CornerType.Rounded,
-    topRight: CornerType.Rounded,
-    bottomRight: CornerType.Rounded,
-    bottomLeft: CornerType.Rounded,
+    topLeft: { type: CornerType.Rounded, size: '1.75em' },
+    topRight: { type: CornerType.Rounded, size: '1.75em' },
+    bottomRight: { type: CornerType.Rounded, size: '1.75em' },
+    bottomLeft: { type: CornerType.Rounded, size: '1.75em' },
   },
 };
 

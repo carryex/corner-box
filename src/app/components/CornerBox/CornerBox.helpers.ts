@@ -1,4 +1,4 @@
-import { CornerPosition, CornerType } from './CornerBox.types';
+import { CornerConfig, CornerPosition, CornerType } from './CornerBox.types';
 
 const CURVE_SEGMENT_COUNT = 16;
 const STEP = Math.PI / CURVE_SEGMENT_COUNT;
@@ -36,8 +36,10 @@ const generateRoundedCorner = (radius: string, position: CornerPosition) => {
   return points.join(', ');
 };
 
-const getCornerShape = (cornerType: CornerType, size: string, position: CornerPosition) => {
-  switch (cornerType) {
+const getCornerShape = (cornerConfig: CornerConfig, position: CornerPosition) => {
+  const { type, size } = cornerConfig;
+
+  switch (type) {
     case CornerType.Angled:
       switch (position) {
         case CornerPosition.LeftTop:
@@ -77,11 +79,11 @@ const getCornerShape = (cornerType: CornerType, size: string, position: CornerPo
   }
 };
 
-export const cornerStyle = (topLeft: CornerType, topRight: CornerType, bottomRight: CornerType, bottomLeft: CornerType, size: string) => {
-  const topLeftCornerShape = getCornerShape(topLeft, size, CornerPosition.LeftTop);
-  const bottomLeftCornerShape = getCornerShape(bottomLeft, size, CornerPosition.LeftBottom);
-  const bottomRightCornerShape = getCornerShape(bottomRight, size, CornerPosition.RightBottom);
-  const topRightCornerShape = getCornerShape(topRight, size, CornerPosition.RightTop);
+export const cornerStyle = (topLeft: CornerConfig, topRight: CornerConfig, bottomRight: CornerConfig, bottomLeft: CornerConfig) => {
+  const topLeftCornerShape = getCornerShape(topLeft, CornerPosition.LeftTop);
+  const bottomLeftCornerShape = getCornerShape(bottomLeft, CornerPosition.LeftBottom);
+  const bottomRightCornerShape = getCornerShape(bottomRight, CornerPosition.RightBottom);
+  const topRightCornerShape = getCornerShape(topRight, CornerPosition.RightTop);
 
   const topLeftCornerInitialShape = topLeftCornerShape.split(',').map(() => '0 0').join(', ');
   const bottomLeftCornerInitialShape = bottomLeftCornerShape.split(',').map(() => '0 100%').join(', ');

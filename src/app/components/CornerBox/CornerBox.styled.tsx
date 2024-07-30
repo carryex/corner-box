@@ -1,5 +1,5 @@
 import { styled, keyframes, css } from '@stitches/react';
-import { CornerType } from './CornerBox.types';
+import { CornerConfig } from './CornerBox.types';
 import { cornerStyle } from './CornerBox.helpers';
 
 export const createClipPathAnimation = (finalClipPath: string, initialClipPath: string) => {
@@ -13,14 +13,13 @@ export const dynamicBorderColor = (borderColor: string) => css({
   '--pseudo-border': `drop-shadow(0px 1px 0px ${borderColor}) drop-shadow(0px -1px 0px ${borderColor}) drop-shadow(-1px 0px 0px ${borderColor}) drop-shadow(1px 0px 0px ${borderColor})`,
 })();
 
-export const generateDynamicStyles = ({ topLeft, topRight, bottomLeft, bottomRight, cornerSize }: {
-  topLeft: CornerType;
-  topRight: CornerType;
-  bottomLeft: CornerType;
-  bottomRight: CornerType;
-  cornerSize: string;
+export const generateDynamicStyles = ({ topLeft, topRight, bottomLeft, bottomRight }: {
+  topLeft: CornerConfig;
+  topRight: CornerConfig;
+  bottomLeft: CornerConfig;
+  bottomRight: CornerConfig;
 }) => {
-  const { finalClipPath, initialClipPath } = cornerStyle(topLeft, topRight, bottomRight, bottomLeft, cornerSize);
+  const { finalClipPath, initialClipPath } = cornerStyle(topLeft, topRight, bottomRight, bottomLeft);
   const animation = createClipPathAnimation(finalClipPath, initialClipPath);
 
   return css({
