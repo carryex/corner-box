@@ -13,19 +13,26 @@ export const dynamicBorderColor = (borderColor: string) => css({
   '--pseudo-border': `drop-shadow(0px 1px 0px ${borderColor}) drop-shadow(0px -1px 0px ${borderColor}) drop-shadow(-1px 0px 0px ${borderColor}) drop-shadow(1px 0px 0px ${borderColor})`,
 })();
 
-export const generateDynamicStyles = ({ topLeft, topRight, bottomLeft, bottomRight }: {
+export const generateDynamicStyles = ({ topLeft, topRight, bottomLeft, bottomRight, animation }: {
   topLeft: CornerConfig;
   topRight: CornerConfig;
   bottomLeft: CornerConfig;
   bottomRight: CornerConfig;
+  animation: boolean;
 }) => {
   const { finalClipPath, initialClipPath } = cornerStyle(topLeft, topRight, bottomRight, bottomLeft);
-  const animation = createClipPathAnimation(finalClipPath, initialClipPath);
+  const clipPathAnimation = createClipPathAnimation(finalClipPath, initialClipPath);
+
+  if (animation) {
+    return css({
+      clipPath: finalClipPath,
+      animation: `${clipPathAnimation} 3s forwards`,
+    })();
+  }
 
   return css({
-    clipPath: finalClipPath,
-    animation: `${animation} 3s forwards`,
-  })();
+    clipPath: finalClipPath
+  })()
 };
 
 export const DemoChildrenContainer = styled('div', {
