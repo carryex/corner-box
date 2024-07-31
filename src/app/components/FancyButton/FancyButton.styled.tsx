@@ -52,50 +52,33 @@ export const FancyButtonContainer = styled('button', {
         height: '38px',
         '.button__cap': {
           width: '16px',
-          top: 0,
-          right: 0,
-          transition: 'fill 0.3s ease, stroke 0.3s ease',
-          position: 'absolute',
-          '.button__cap-eye': {
-            transition: 'transform 0.3s ease',
-          }
         }
       },
       medium: {
         height: '50px',
         '.button__cap': {
           width: '20px',
-          top: 0,
-          right: 0,
-          transition: 'fill 0.3s ease, stroke 0.3s ease',
-          position: 'absolute',
-          '.button__cap-eye': {
-            transition: 'transform 0.3s ease',
-          }
         }
       },
       large: {
         height: '68px',
-        top: 0,
-        right: 0,
         '.button__cap': {
           width: '25px',
-          top: 0,
-          right: 0,
-          transition: 'fill 0.3s ease, stroke 0.3s ease',
-          position: 'absolute',
-          '.button__cap-eye': {
-            transition: 'transform 0.3s ease',
-          }
         },
-        '&:hover': {
-          '.button__cap-eye': {
-            animation: `${rotate} 0.3s linear`
-          }
-        }
       }
     }
   },
+  '& > .button__cap': {
+    top: 0,
+    right: 0,
+    transition: 'fill 0.3s ease, stroke 0.3s ease',
+    position: 'absolute',
+  },
+  '&:hover': {
+    '.button__cap-eye': {
+      animation: `${rotate} 0.3s linear`
+    }
+  }
 });
 
 export const FancyButtonChildrenContainer = styled('div', {
