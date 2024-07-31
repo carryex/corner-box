@@ -84,19 +84,29 @@ export const FancyButtonContainer = styled('button', {
 export const FancyButtonChildrenContainer = styled('div', {
   position: 'relative',
   height: '100%',
+  display: 'flex',
   variants: {
     size: {
       small: {
         padding: '0 0.75em',
         fontSize: '0.81em',
+        'svg': {
+          width: '15px',
+        }
       },
       medium: {
         padding: '0 1.5em',
         fontSize: '1.08em',
+        'svg': {
+          width: '20px',
+        }
       },
       large: {
         padding: '0 2.25em',
         fontSize: '1.44em',
+        'svg': {
+          width: '25px',
+        }
       }
     }
   }

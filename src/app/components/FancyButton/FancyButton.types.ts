@@ -1,5 +1,3 @@
-import { BaseCornerBoxProps } from "../CornerBox/CornerBox.types";
-
 export enum BasicSize {
   Small = 'small',
   Medium = 'medium',
@@ -8,7 +6,7 @@ export enum BasicSize {
 
 export type FancyButtonProps = {
   variant: 'primary' | 'secondary';
-  children: string;
+  children: string | React.ReactNode;
   size?: BasicSize;
   onClick?: () => void;
 };
